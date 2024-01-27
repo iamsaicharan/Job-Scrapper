@@ -41,18 +41,16 @@ url = bare_url + params
 response = requests.get(url, headers=headers)
 soup = BeautifulSoup(response.text, 'html.parser')
 divs = soup.findAll("div", attrs={"class": "g"})
-results_div = soup.find("div", attrs={"id": "resultStats"})
-results_div = soup.find("div", attrs={"class": "g"})
-results_div_text = results_div.get_text()
-if results_div_text:
-    regex = r"((?:\d+[,\.])*\d+)"
-    m = findall(regex, results_div_text)
-    num = m[0].replace(",", "").replace(".", "")
-    number_of_results = int(num)
-else:
-    number_of_results = 0
-j = 0
-print(results_div_text)
+print(divs)
+# if results_div_text:
+#     regex = r"((?:\d+[,\.])*\d+)"
+#     m = findall(regex, results_div_text)
+#     num = m[0].replace(",", "").replace(".", "")
+#     number_of_results = int(num)
+# else:
+#     number_of_results = 0
+# j = 0
+# print(results_div_text)
 for li in divs:
     print(li)
     # res.page = i
